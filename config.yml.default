@@ -1,0 +1,40 @@
+# Base URI to API
+target_uri: 'http://localhost:3001/api/v1/'
+
+# Determines if the request should be asynchronous
+async_requests: true
+
+## Request list
+# fields:
+#   source: center which provide the data (located in centers/ folder)
+#   request_type: type of request that the source will provide
+#   endpoint: endpoint where the data will be sent
+#   request_number: number of request that will be sent
+requests_meta: [
+  {
+    source: 'MedicalCenter1',
+    request_type: 'patient',
+    endpoint: 'patients',
+    request_number: 1
+  },
+  {
+    source: 'MedicalCenter1',
+    request_type: 'professional',
+    endpoint: '',
+    request_number: 1
+  },
+  {
+    source: 'MedicalCenter1',
+    request_type: 'consult',
+    endpoint: 'consults',
+    request_number: 1
+  },
+  {
+    source: 'MedicalCenter1',
+    request_type: 'movement',
+    endpoint: '',
+    request_number: 1
+  },
+  # {source: 'MedicalCenter2', request_type: 'consult', request_number: 100}
+  # {source: 'ClinicaBicentenario', request_type: 'exam', request_number: 420}
+]

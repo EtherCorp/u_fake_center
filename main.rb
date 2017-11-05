@@ -1,18 +1,19 @@
 require_relative 'medical_center_faker'
+require 'yaml'
 
-faker = MedicalCenterFaker.new
+def symbolize(obj)
+  if obj.is_a? Hash
+    return obj.inject({}) do |memo, (k, v)|
+      memo.tap { |m| m[k.to_sym] = symbolize(v) }
+    end
+  elsif obj.is_a? Array
+    return obj.map { |memo| symbolize(memo) }
+  end
+  obj
+end
 
-# Use default parameters
-faker.run
-faker.run2
-faker.run3
-faker.run4
+config = symbolize(YAML.load_file('config.yml'))
 
-# Use custom requests
-requests_meta = [
-  {source: 'MedicalCenter1', request_type: 'patient', request_number: 8645}
-  # {source: 'MedicalCenter2', request_type: 'consult', request_number: 100}
-  # {source: 'ClinicaBicentenario', request_type: 'exam', request_number: 420}
-]
+faker = MedicalCenterFaker.new(config[:target_uri], config[:async_requests])
 
-# faker.run(request_meta)
+faker.run(config[:requests_meta])
