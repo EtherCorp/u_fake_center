@@ -2,6 +2,8 @@
 
 require 'faker'
 require 'json'
+require 'fileutils'
+require 'base64'
 
 class MedicalCenter1
   def self.token
@@ -53,7 +55,9 @@ class MedicalCenter1
     data[:tipo] = movements[rand(0..5)]
     data[:runProfesional] = Faker::Number.number(9)
     data[:runPaciente] = Faker::Number.number(9)
-    data[:detalles] = ['detalle1 : detalle1', 'detalle2 : detalle2']
+    archivo = File.open("Testfile.pdf", 'r')
+    data[:detalles] = Base64.encode64(archivo.read)
+    archivo.close
     data
   end
 end
