@@ -7,7 +7,7 @@ require 'base64'
 
 class MedicalCenter1
   def self.token
-    's09u2uhf123hsfkdjfs'
+    'eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl9pZCI6MTJ9.MCcxTEBD35EEEJNbdmGiarl6GaLP1vpyy2y2KU6Te-A'
   end
 
   def self.patient
@@ -55,9 +55,9 @@ class MedicalCenter1
     data[:tipo] = movements[rand(0..5)]
     data[:runProfesional] = Faker::Number.number(9)
     data[:runPaciente] = Faker::Number.number(9)
-    archivo = File.open("Testfile.pdf", 'r')
-    data[:detalles] = Base64.encode64(archivo.read)
-    archivo.close
+    test_file = File.open("centers/Testfile.pdf", 'r')
+    data[:detalles] = Base64.encode64(test_file.read)
+    test_file.close
     data
   end
 end
