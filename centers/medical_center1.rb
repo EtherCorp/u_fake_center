@@ -30,7 +30,7 @@ class MedicalCenter1
     data[:numero_registro] = Faker::Number.number(9)
     data[:fecha_registro] = Faker::Date.backward
     data[:especialidad] = 1 # <-- como es una referencia de la tabla especialidad... no se que colocar
-    data[:freelance] = false
+    data[:freelance] = Faker::Boolean.boolean
     data[:telefono] = Faker::Number.number(9)
     data[:email] = Faker::Internet.email(data[:nombre])
     data
