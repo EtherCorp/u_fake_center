@@ -15,12 +15,12 @@ requests_meta: [
     source: 'MedicalCenter1',
     request_type: 'patient',
     endpoint: 'patients',
-    request_number: 1
+    request_number: 3
   },
   {
     source: 'MedicalCenter1',
     request_type: 'professional',
-    endpoint: '',
+    endpoint: 'professionals',
     request_number: 1
   },
   {
@@ -32,7 +32,7 @@ requests_meta: [
   {
     source: 'MedicalCenter1',
     request_type: 'movement',
-    endpoint: '',
+    endpoint: 'movements',
     request_number: 1
   },
   # {source: 'MedicalCenter2', request_type: 'consult', request_number: 100}

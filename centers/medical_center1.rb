@@ -5,7 +5,7 @@ require 'json'
 
 class MedicalCenter1
   def self.token
-    's09u2uhf123hsfkdjfs'
+    'eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl9pZCI6MX0.YBoHU254D5ts-jG3Pxd7s0i8B8Qb-Ju7OSR7k6IN4pE'
   end
 
   def self.patient
@@ -29,7 +29,7 @@ class MedicalCenter1
 
     data[:numero_registro] = Faker::Number.number(9)
     data[:fecha_registro] = Faker::Date.backward
-    data[:especialidad] = Faker::Company.name # <-- como es una referencia de la tabla especialidad... no se que colocar
+    data[:especialidad] = 1 # <-- como es una referencia de la tabla especialidad... no se que colocar
     data[:freelance] = Faker::Boolean.boolean
     data[:telefono] = Faker::Number.number(9)
     data[:email] = Faker::Internet.email(data[:nombre])
@@ -57,3 +57,4 @@ class MedicalCenter1
     data
   end
 end
+ 
