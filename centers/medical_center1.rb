@@ -2,6 +2,7 @@
 
 require 'faker'
 require 'json'
+require 'base64'
 
 class MedicalCenter1
   def self.token
@@ -38,8 +39,10 @@ class MedicalCenter1
 
   def self.consult
     data = {}
-    data[:runProfesional] = Faker::Number.number(9)
-    data[:runPaciente] = Faker::Number.number(9)
+    #data[:runProfesional] = Faker::Number.number(9)
+    #data[:runPaciente] = Faker::Number.number(9)
+    data[:idPaciente] = 1
+    data[:idProfesional] =  1
     data[:fecha] = Faker::Date.backward
     data[:razon] = Faker::Company.name
     data[:sintoma] = Faker::Company.name
@@ -47,14 +50,26 @@ class MedicalCenter1
     data
   end
 
+  def self.read_file(file_name)
+    file = File.open(file_name)
+    data = file.read
+    file.close
+    data
+  end
+
   def self.movement
     data = {}
     movements = %w[Exam Prescription Diagnostic License Procedure Other]
     data[:tipo] = movements[rand(0..5)]
-    data[:runProfesional] = Faker::Number.number(9)
-    data[:runPaciente] = Faker::Number.number(9)
-    data[:detalles] = ['detalle1 : detalle1', 'detalle2 : detalle2']
+    #data[:runProfesional] = Faker::Number.number(9)
+    #data[:runPaciente] = Faker::Number.number(9)
+    data[:consulta] = 1
+    data[:detalles] = { 'other' => Faker::Lorem.paragraph(2, false, 20),
+                        'files' => [{ 'name' => 'test.txt',
+                                      'file' => Base64.encode64(read_file('test.jpg'))}]}
     data
   end
+
+  
 end
- 
+
